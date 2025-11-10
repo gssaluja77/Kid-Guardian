@@ -17,16 +17,16 @@ desktop  = os.path.expanduser("~/Desktop")
 today = datetime.today().strftime('%Y-%m-%d')
 def createFolder(desktop):
     try:
-        if not os.path.exists(desktop+"/Baby Camera Footage"):
-            os.makedirs(desktop+"/Baby Camera Footage")
-        if not os.path.exists(desktop+ "/Baby Camera Footage/"+today):
-            os.makedirs(desktop+ "/Baby Camera Footage/"+today)
+        if not os.path.exists(desktop+"/Kid Camera Footage"):
+            os.makedirs(desktop+"/Kid Camera Footage")
+        if not os.path.exists(desktop+ "/Kid Camera Footage/"+today):
+            os.makedirs(desktop+ "/Kid Camera Footage/"+today)
     except OSError:
         print('Error: Creating Directory.')
-    return desktop+"/Baby Camera Footage/"+today+"/"
+    return desktop+"/Kid Camera Footage/"+today+"/"
 createFolder(desktop) 
 
-log_path = os.path.expanduser(desktop + "/Baby Camera Footage/log.txt")
+log_path = os.path.expanduser(desktop + "/Kid Camera Footage/log.txt")
 log = Logger(log_path)
 
 class Camera:
@@ -93,7 +93,7 @@ class Camera:
         make_480p(feed)
         current_time = datetime.now().strftime("%H-%M-%S")
         filename = str(current_time)+'.mp4'
-        video = desktop+"/Baby Camera Footage/"+today+"/"+filename
+        video = desktop+"/Kid Camera Footage/"+today+"/"+filename
         
         out = cv2.VideoWriter(video, cv2.VideoWriter_fourcc(*'mp4v'), 10, (640,480))
         while True:
@@ -191,7 +191,7 @@ class Camera:
                 cursor.execute("select file_key from credentials where email = ?", (currentuseremail,))
                 file_key = cursor.fetchone()
 
-                tmsg.showinfo(message="Footage encrypted and saved in Baby Monitor Footage on Desktop! You can access it by logging in through the app.")
+                tmsg.showinfo(message="Footage encrypted and saved in Kid Monitor Footage on Desktop! You can access it by logging in through the app.")
                 break
             
             # Disabled the live feed temporarily
@@ -201,7 +201,7 @@ class Camera:
             # Saves screenshot
             elif keypress == 115:
                 screenshot = str(datetime.now().strftime("%H-%M-%S-%MS"))+".jpg"
-                if not cv2.imwrite(desktop+"/Baby Camera Footage/"+screenshot, img_rgb):
+                if not cv2.imwrite(desktop+"/Kid Camera Footage/"+screenshot, img_rgb):
                     print("Couldn't save screenshot")
                     
         #this will release our resource so that another program can use our camera.

@@ -15,7 +15,7 @@ from logger import Logger
 
 root = Tk()
 
-root.title("Baby Monitoring System")
+root.title("Kid's Guardian")
 window_width = 700
 window_height = 500
 root.geometry(f"{window_width}x{window_height}")
@@ -26,8 +26,8 @@ desktop  = os.path.expanduser("~/Desktop")
 db = sqlite3.connect ("userdata.db")
 cursor = db.cursor()
 
-log_path = os.path.expanduser(desktop + "\\Baby Camera Footage\\log.txt")
-log = Logger(desktop + "/Baby Camera Footage/log.txt")
+log_path = os.path.expanduser(desktop + "\\Kid Camera Footage\\log.txt")
+log = Logger(desktop + "/Kid Camera Footage/log.txt")
 
 def open_file():
     """
@@ -37,7 +37,7 @@ def open_file():
     """
     if user_access():
         key = get_key(email_input)
-        filepath = filedialog.askopenfilename(initialdir=desktop+"/Baby Camera Footage",
+        filepath = filedialog.askopenfilename(initialdir=desktop+"/Kid Camera Footage",
                                           title="Camera Footage",
                                           filetypes= (("all video format", ".mp4",".avi"),
                                           ('image files', '.jpg')))
@@ -200,7 +200,7 @@ bg_label.place(x=0, y=0)
 
 heading_frame = Frame(root, borderwidth=4, relief=SUNKEN)
 heading_frame.place(x=320, y=40)
-heading_text = Label(heading_frame, text="Welcome to Baby Monitoring System!",
+heading_text = Label(heading_frame, text="Welcome to Kid's Guardian!",
                      fg="yellow", font="comicsansms 16 bold", bg="brown")
 heading_text.grid()
 
